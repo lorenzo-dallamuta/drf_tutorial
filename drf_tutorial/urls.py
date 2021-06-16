@@ -19,6 +19,7 @@ import drf_tutorial.settings as settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("", include("snippets.urls")),
 ]
 
 if settings.DEBUG:
