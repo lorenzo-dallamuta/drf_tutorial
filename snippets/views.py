@@ -1,9 +1,20 @@
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
 from rest_framework import generics, permissions
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
 from snippets.serializers import UserSerializer
 from snippets.permissions import IsOwnerOrReadOnly
 from account.models import CustomUser as User
+
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'users': reverse('user-list', request=request, format=format),
+        'snippets': reverse('snippet-list', request=request, format=format)
+    })
 
 
 class SnippetList(generics.ListCreateAPIView):
