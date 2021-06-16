@@ -130,6 +130,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Subclass default user model
 AUTH_USER_MODEL = 'account.CustomUser'
 
+# DRF options
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
 # DEBUG options
 if DEBUG:
     INSTALLED_APPS += [
